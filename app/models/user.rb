@@ -14,4 +14,6 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX, message: 'には英数字のみ使用し、英数字の両方を含むようにしてください' }
   validates :date_of_birth,      presence: true
+
+  has_many :items
 end
