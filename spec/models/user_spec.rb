@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       it 'emailに「@]が含まれていない場合登録できない' do
         @user.email = 'samplesample.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       # Passwordへのテスト
@@ -55,22 +55,22 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'passwordは数字だけでは登録できない' do
-        @user.password = 111111
-        @user.password_confirmation = 111111
+        @user.password = 111_111
+        @user.password_confirmation = 111_111
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password には英数字のみ使用し、英数字の両方を含むようにしてください")
+        expect(@user.errors.full_messages).to include('Password には英数字のみ使用し、英数字の両方を含むようにしてください')
       end
       it 'passwordは英字だけでは登録できない' do
         @user.password = 'abcdef'
         @user.password_confirmation = 'abcdef'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password には英数字のみ使用し、英数字の両方を含むようにしてください")
+        expect(@user.errors.full_messages).to include('Password には英数字のみ使用し、英数字の両方を含むようにしてください')
       end
       it 'passwordに全角文字を含む場合、登録できない' do
         @user.password = 'あaaa111'
         @user.password_confirmation = 'あaaa111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password には英数字のみ使用し、英数字の両方を含むようにしてください")
+        expect(@user.errors.full_messages).to include('Password には英数字のみ使用し、英数字の両方を含むようにしてください')
       end
 
       # Last_nameへのテスト
@@ -187,7 +187,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Date of birth can't be blank")
       end
-
     end
   end
 end
